@@ -71,3 +71,7 @@ Once results are displayed, you can:
 ## License
 
 MIT License - see the LICENSE file for details.
+
+## Icon
+
+- [Parsing icons created by Freepik - Flaticon](https://www.flaticon.com/free-icons/parsing "parsing icons")
