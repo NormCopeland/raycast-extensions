@@ -1,0 +1,147 @@
+{
+  "name": "dummy-pdf-and-image-generator",
+  "title": "Dummy PDF and Image Generator",
+  "description": "Generate dummy PDFs and images in Downloads",
+  "icon": "extension-icon.png",
+  "author": "normcopeland",
+  "categories": ["Developer Tools"],
+  "license": "MIT",
+  "commands": [
+    {
+      "name": "generate-dummy-pdf",
+      "title": "Generate Dummy PDF",
+      "description": "Create a styled dummy PDF in Downloads",
+      "mode": "view",
+      "preferences": [
+        {
+          "name": "pdfPages",
+          "title": "Number of Pages",
+          "description": "How many pages to generate (1-100)",
+          "type": "textfield",
+          "required": false,
+          "default": "1"
+        },
+        {
+          "name": "pdfTitle",
+          "title": "Default Title",
+          "description": "Title text shown near the top of each page",
+          "type": "textfield",
+          "required": false,
+          "default": "Random Lorem Ipsum Document"
+        },
+        {
+          "name": "pdfParagraph",
+          "title": "Default Paragraph Text",
+          "description": "If empty, random lorem-style text is generated locally",
+          "type": "textfield",
+          "required": false
+        },
+        {
+          "name": "pdfDateFormat",
+          "title": "Date Format",
+          "description": "Format used for the date shown on each page",
+          "type": "dropdown",
+          "required": false,
+          "default": "iso-utc",
+          "data": [
+            { "title": "ISO 8601 (UTC)", "value": "iso-utc" },
+            { "title": "ISO 8601 (Local)", "value": "iso-local" },
+            { "title": "YYYY-MM-DD HH:mm", "value": "ymd-hm" },
+            { "title": "DD MMM YYYY HH:mm", "value": "dd-mmm-yyyy-hm" }
+          ]
+        },
+        {
+          "name": "pdfFileNameTemplate",
+          "title": "PDF File Name Template",
+          "description": "Placeholders: {timestamp}, {date}, {title}, {pages}",
+          "type": "textfield",
+          "required": false,
+          "default": "dummy_document_{timestamp}"
+        }
+      ]
+    },
+    {
+      "name": "generate-dummy-image",
+      "title": "Generate Dummy Image",
+      "description": "Download a dummy image to Downloads",
+      "mode": "view",
+      "preferences": [
+        {
+          "name": "defaultSize",
+          "title": "Default Dimensions",
+          "description": "Fallback dimensions when size field is empty",
+          "type": "textfield",
+          "required": false,
+          "default": "500x500"
+        },
+        {
+          "name": "defaultBgColor",
+          "title": "Default Background Color (hex)",
+          "description": "Hex color without #, e.g. 8ECF4F",
+          "type": "textfield",
+          "required": false,
+          "default": "8ECF4F"
+        },
+        {
+          "name": "defaultFgColor",
+          "title": "Default Text Color (hex)",
+          "description": "Hex color without #, e.g. FFFFFF",
+          "type": "textfield",
+          "required": false,
+          "default": "FFFFFF"
+        },
+        {
+          "name": "defaultText",
+          "title": "Default Text",
+          "description": "Used when text field is empty",
+          "type": "textfield",
+          "required": false,
+          "default": "Dummy"
+        },
+        {
+          "name": "defaultFont",
+          "title": "Default Font",
+          "description": "Fallback font for image generation",
+          "type": "dropdown",
+          "required": false,
+          "default": "lato",
+          "data": [
+            { "title": "Lato", "value": "lato" },
+            { "title": "Montserrat", "value": "montserrat" },
+            { "title": "Open Sans", "value": "opensans" },
+            { "title": "Oswald", "value": "oswald" },
+            { "title": "Playfair Display", "value": "playfairdisplay" },
+            { "title": "Poppins", "value": "poppins" },
+            { "title": "PT Serif", "value": "ptserif" },
+            { "title": "Raleway", "value": "raleway" },
+            { "title": "Roboto", "value": "roboto" }
+          ]
+        },
+        {
+          "name": "imageFileNameTemplate",
+          "title": "Image File Name Template",
+          "description": "Placeholders: {timestamp}, {date}, {size}, {text}, {font}, {bg}, {fg}",
+          "type": "textfield",
+          "required": false,
+          "default": "{size}-{text}-{font}"
+        }
+      ]
+    }
+  ],
+  "dependencies": {
+    "@raycast/api": "^1.93.0",
+    "pdf-lib": "^1.17.1"
+  },
+  "devDependencies": {
+    "@raycast/eslint-config": "^2.0.0",
+    "@types/node": "^22.0.0",
+    "prettier": "^3.3.0",
+    "typescript": "^5.6.0"
+  },
+  "scripts": {
+    "build": "ray build -e dist",
+    "dev": "ray develop",
+    "lint": "ray lint",
+    "fix-lint": "ray lint --fix"
+  }
+}
