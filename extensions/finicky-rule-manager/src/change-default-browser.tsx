@@ -74,7 +74,13 @@ export default function Command() {
           <List.Item
             key={browser.bundleId}
             title={browser.name}
-            icon={browser.appPath ? { fileIcon: browser.appPath } : browser.homepage ? getFavicon(browser.homepage, { fallback: Icon.AppWindow }) : Icon.AppWindow}
+            icon={
+              browser.appPath
+                ? { fileIcon: browser.appPath }
+                : browser.homepage
+                  ? getFavicon(browser.homepage, { fallback: Icon.AppWindow })
+                  : Icon.AppWindow
+            }
             accessories={[...(isDefault ? [{ icon: Icon.CheckCircle, tooltip: "Current Default" }] : [])]}
             actions={
               <ActionPanel>

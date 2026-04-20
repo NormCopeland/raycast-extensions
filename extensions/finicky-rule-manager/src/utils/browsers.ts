@@ -20,7 +20,11 @@ const COMMON_BROWSERS: Browser[] = [
   { name: "Opera", bundleId: "com.operasoftware.Opera", homepage: "https://www.opera.com" },
   { name: "Vivaldi", bundleId: "com.vivaldi.Vivaldi", homepage: "https://vivaldi.com" },
   { name: "Chromium", bundleId: "org.chromium.Chromium", homepage: "https://www.chromium.org" },
-  { name: "Safari Technology Preview", bundleId: "com.apple.SafariTechnologyPreview", homepage: "https://developer.apple.com/safari/" },
+  {
+    name: "Safari Technology Preview",
+    bundleId: "com.apple.SafariTechnologyPreview",
+    homepage: "https://developer.apple.com/safari/",
+  },
   { name: "DuckDuckGo", bundleId: "com.duckduckgo.macos.browser", homepage: "https://duckduckgo.com" },
   { name: "Orion", bundleId: "com.kagi.kagimacOS", homepage: "https://browser.kagi.com" },
   { name: "SigmaOS", bundleId: "com.sigmaos.sigmaos.macos", homepage: "https://sigmaos.com" },
@@ -36,7 +40,7 @@ export async function detectInstalledBrowsers(): Promise<Browser[]> {
     try {
       // Use mdfind to check if the app is installed and get its path
       const { stdout } = await execAsync(`mdfind "kMDItemCFBundleIdentifier == '${browser.bundleId}'"`);
-      const appPath = stdout.trim().split('\n')[0]; // Get first result
+      const appPath = stdout.trim().split("\n")[0]; // Get first result
       if (appPath) {
         installed.push({ ...browser, appPath });
       }
